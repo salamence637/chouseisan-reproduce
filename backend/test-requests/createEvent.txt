@@ -1,0 +1,68 @@
+# creating event
+eventID=a85b533a-bd85-490c-a785-0d539f58bbac
+curl --verbose -X POST -H "Content-Type: application/json" -d '{"title":"test event", "detail":"test", "due_edit":"2024/5/30", "dateTimeProposal":"a\nb\nc"}' http://localhost:8080/createEvent
+-> uuidが帰ってくる．
+
+# deleting an event
+curl --verbose -X DELETE -H "Content-Type: application/json" -d '{"eventID":{event_id}}' http://localhost:8080/event
+curl --verbose -X DELETE -H "Content-Type: application/json" -d '{"eventID":"1a0f0830-2d7b-479e-8f55-1c7c5e155fc2"}' http://localhost:8080/event
+
+# deleting an event from cookie
+curl --verbose -X DELETE -b "{event_id}={host_Token}" -H "Content-Type: application/json" http://localhost:8080/event/{event_id}
+curl --verbose -X DELETE -b "20e5e035-3f53-400f-8104-9e20844076ea=5a0bfc90-371b-4600-ac9f-7cf738b7c63f" -H "Content-Type: application/json" http://localhost:8080/event/20e5e035-3f53-400f-8104-9e20844076ea
+
+
+# modifying event title and detail 
+curl --verbose -X PUT -b "10626d98-009d-49b5-a1e7-577c47592fcf=86ccb443-6ce9-4e8a-9a25-a67ef2fe02d8" -H "Content-Type: application/json" -d '{"title":"modified title", "detail":"modified description", "due_edit": "12/22"}' http://localhost:8080/event/editTitleDetail/10626d98-009d-49b5-a1e7-577c47592fcf
+curl --verbose -X PUT -b "1bb6e4d1-633a-465a-b297-3ac03441ac7d=35f9a2f7-adec-4a6e-9132-ddf51469681b" -H "Content-Type: application/json" -d '{"title":"modified title", "detail":"modified description"}' http://localhost:8080/event/editTitleDetail/1bb6e4d1-633a-465a-b297-3ac03441ac7d
+
+# modifying only event title
+curl --verbose -X PUT -b "{event_id}={host_Token}" -H "Content-Type: application/json" -d '{"title":"only modify title"}' http://localhost:8080/event/editTitleDetail/{event_id}
+curl --verbose -X PUT -b "93610a3a-bab0-46e9-a10b-c11911a60d64=bb825832-6940-45c1-9337-470598c07b18" -H "Content-Type: application/json" -d '{"title":"only modify title"}' http://localhost:8080/event/editTitleDetail/d6efa370-e0ca-4e87-807d-67b41d2589bd
+
+
+# getting timeslots of the event
+curl --verbose -X GET  http://localhost:8080/event/timeslots/{event_id}
+curl --verbose -X GET  http://localhost:8080/event/timeslots/e4743fa0-beb2-4cf3-9eb5-8c68e68bd88c
+
+
+# deleting some timeslots of the event
+curl --verbose -X PUT -b "1bb6e4d1-633a-465a-b297-3ac03441ac7d=35f9a2f7-adec-4a6e-9132-ddf51469681b" -H "Content-Type: application/json" -d '{"timeslot_ids":[4,5]}' http://localhost:8080/event/deleteTimeslots/1bb6e4d1-633a-465a-b297-3ac03441ac7d
+
+# adding some timeslots of the event
+curl --verbose -X PUT -b "a53b5460-d7d8-4061-886d-ee25f286f21e=9dd58e9d-16e3-4036-9fce-7e50be68e52b" -H "Content-Type: application/json" -d '{"dateTimeProposal":"today\ntomorrow"}' http://localhost:8080/event/addTimeslots/a53b5460-d7d8-4061-886d-ee25f286f21e
+curl --verbose -X PUT -b "8e54f4a9-789f-4b1a-b310-e05248a73bb5=6b063409-3c56-4ddd-81d6-652fdac6de52" -H "Content-Type: application/json" -d '{"dateTimeProposal":""}' http://localhost:8080/event/addTimeslots/8e54f4a9-789f-4b1a-b310-e05248a73bb5
+
+
+# check if event exists
+curl --verbose -X GET http://localhost:8080/event/exist/074e292f-7d0c-4c4f-97d8-908818036b8
+
+# check if event's created by the user
+curl --verbose -X GET -b "daf4a17a-1b69-445b-910d-488c3ddb70f9=40060f3b-be6d-4307-9ff5-7b6ec72d73d5"  http://localhost:8080/event/isCreatedBySelf/daf4a17a-1b69-445b-910d-488c3ddb70f9
+
+
+
+# add attendance for an event
+curl --verbose -X POST 
+
+curl --verbose -X POST -H "Content-Type: application/json" -d '{"availability": {"1": 1, "2": 2,"3": 1},"name": "John","comment": "tomorrow is best", "email": "s.yuki.regista@gmail.com"}' http://localhost:8080/attendance/ed2ec88b-f0ad-4ea4-a911-21ebb15879a2
+
+curl --verbose -X GET  http://localhost:8080/attendance/8fe49b30-70b5-4c8e-8a0e-6a35da55dd8f
+
+curl --verbose -X GET  http://localhost:8080/event/b7c9783c-d010-462b-9d09-6d1037b974e9
+
+
+
+# modify attendance for an event
+
+curl --verbose -X PUT -H "Content-Type: application/json" -d '{"availability": {"1": 3, "2": 3,"3": 3},"name": "John","comment": "today is best", "user_id": 1}' http://localhost:8080/attendance/7284c5cf-80de-45b0-a58c-671f30e040d6
+
+
+# get event info
+curl --verbose -X GET http://localhost:8080/attendance/ed2ec88b-f0ad-4ea4-a911-21ebb15879a2
+
+curl --verbose -X GET http://localhost:8080/event/basic/10626d98-009d-49b5-a1e7-577c47592fcf
+
+
+# edit due dateTimeProposal
+curl --verbose -X PUT -H "Content-Type: application/json" -b "2495774d-69fb-4ddd-b410-09f3fdb90e37=5c17a2e1-e139-4a40-85cb-73381ec43ae2" -d '{"due_edit": "Thu, 11 Jan 2024 15:07:00 GMT"}' http://localhost:8080/event/editDue/2495774d-69fb-4ddd-b410-09f3fdb90e37

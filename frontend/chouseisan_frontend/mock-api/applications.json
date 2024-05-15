@@ -1,0 +1,64 @@
+{
+  "eventData": {
+    "scheduleList": [
+      "10/17(火) 15:00〜",
+      "10/17(火) 16:00〜",
+      "10/17(火) 17:00〜",
+      "10/17(水) 15:00〜",
+      "10/18(水) 16:00〜"
+    ],
+    "participants": [
+      {
+        "name": "内藤",
+        
+        "comment": "123",
+        "result": [1, 2, 3, 1, 2]
+      },
+      {
+        "name": "中村",
+        "comment": "123",
+        "result": [2, 3, 1, 2, 1]
+      },
+      {
+        "name": "姜",
+        "comment": "123",
+        "result": [1, 2, 3, 1, 2]
+      },
+      {
+        "name": "鄭",
+        "comment": "123",
+        "result": [2, 3, 1, 2, 1]
+      },
+      {
+        "name": "邱",
+        "comment": "123",
+        "result": [1, 2, 3, 1, 2]
+      },
+      {
+        "name": "高澤",
+        "comment": "123",
+        "result": [2, 3, 1, 2, 1]
+      },
+      {
+        "name": "広部",
+        "comment": "123",
+        "result": [1, 2, 3, 1, 2]
+      }
+    ]
+  },
+  "eventBasic": {
+    "name": "meeting",
+    "number": 2,
+    "detail": "some details"
+  },
+  "createEvent": {
+    "title": "qwe",
+    "detail": "dsf",
+    "dateList": "dfs"
+  },
+  "addAttendence": {
+    "name": "中村",
+    "result": [1, 1, 3, 1, 3],
+    "comment": "zxc"
+  }
+}

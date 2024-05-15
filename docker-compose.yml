@@ -1,0 +1,51 @@
+version: "3"
+services:
+  frontend-service:
+    build: ./frontend
+    container_name: chouseisan-frontend-container
+    volumes:
+      - ./frontend:/app/frontend
+    tty: true
+    ports:
+      - "3000:3000"
+    command: sh -c "npm start"
+
+  backend-service:
+    build: ./backend
+    container_name: chouseisan-backend-container
+    tty: true
+    ports:
+      - "8080:8080"
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: chouseisan
+      CHOUSEISAN_EMAIL_PASSWORD: ${CHOUSEISAN_EMAIL_PASSWORD}
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "mysql", "-uuser", "-ppassword"]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+    networks:
+      - chouseisan-net
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.2
+    container_name: chouseisan-mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_DATABASE: chouseisan
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    networks:
+      - chouseisan-net
+    ports:
+      - "3306:3306"
+    command: --default-authentication-plugin=mysql_native_password
+    volumes: -./:/app
+networks:
+  chouseisan-net:

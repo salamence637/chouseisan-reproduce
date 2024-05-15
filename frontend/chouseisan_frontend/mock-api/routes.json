@@ -1,0 +1,4 @@
+{
+    "/operation-support-service/api/testpoints/currency": "/testpoints_currency",
+    "/operation-support-service/api/testpoints/point_grant_type/JPY": "/testpoints_currency_jpy"
+}

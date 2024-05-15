@@ -1,0 +1,42 @@
+.bg {
+  background-color: #f1f1f1e6;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header {
+  color: #666;
+  font-size: 22px;
+  border-bottom: 1px solid #999;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+}
+
+.history-simpler-container {
+  margin: 0 auto;
+  position: relative;
+  width: 970px;
+  margin-top: 50px;
+}
+.paragraph {
+  position: absolute;
+  right: 0;
+  font-size: small;
+}
+.history-card {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.history-item {
+  width: 475px;
+  height: 140px;
+  margin-right: 50px;
+  background-color: white;
+  border: 1px solid #ccc;
+}
+.history-item:hover {
+  background-color: #f8f6e3;
+}

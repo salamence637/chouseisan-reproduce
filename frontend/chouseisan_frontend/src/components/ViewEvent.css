@@ -1,0 +1,48 @@
+.container1,
+.container2 {
+  width: 970px;
+  margin: 0 auto;
+  
+  position: relative;
+}
+.container1 {
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.event-header {
+  color: #666;
+  font-size: 22px;
+  border-bottom: 1px solid #999;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+}
+.event-info {
+  font-size: 16px;
+  font-weight: 400;
+  height: 22px;
+  line-height: 22px;
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+.no-label {
+  background-color: #939292;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  margin-right: 3px;
+  padding: 2px;
+}
+.event-detail {
+  font-size: 20px;
+  font-weight: 500;
+  color: #666;
+  height: 22px;
+  line-height: 22px;
+  margin-bottom: 10px;
+  margin-top: 30px;
+  border-left: 4px solid #666;
+  padding-left: 5px;
+}
